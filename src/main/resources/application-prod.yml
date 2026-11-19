@@ -67,3 +67,9 @@ admin:
     email: ${ADMIN_SEED_EMAIL:}
     password: ${ADMIN_SEED_PASSWORD:}
     nickname: ${ADMIN_SEED_NICKNAME:lucium}
+
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
