@@ -70,7 +70,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-testcontainers'
     testImplementation 'org.testcontainers:testcontainers-junit-jupiter'
     testImplementation 'org.testcontainers:testcontainers-postgresql'
-    testImplementation 'com.redis:testcontainers-redis:2.2.4'
+    testImplementation 'com.redis:testcontainers-redis:3.0.1'
     testImplementation 'org.springframework.boot:spring-boot-starter-webflux'
     testImplementation 'org.testcontainers:elasticsearch'
     testImplementation 'org.testcontainers:mockserver:1.20.4'
