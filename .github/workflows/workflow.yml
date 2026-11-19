@@ -65,7 +65,7 @@ jobs:
 
       # 백엔드 이미지
       - name: Build and push blog-api
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: ./Dockerfile
@@ -78,7 +78,7 @@ jobs:
 
       # 프론트 이미지
       - name: Build and push blog-web
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: ./Dockerfile.web
