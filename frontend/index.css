@@ -1,0 +1,432 @@
+/* === Font imports === */
+/* Pretendard 한글 (CDN — 운영 시 self-host 전환 검토) */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css');
+
+/* Variable fonts (npm) */
+@import "@fontsource-variable/fraunces";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+
+@import "tailwindcss";
+
+/* === P 시안 토큰 ===
+ * 컨셉: lucium = lux(빛). 포인트는 빛이 산란된 하늘색(세룰리안) 하나.
+ *  - 기존 토큰 이름(primary/accent/ink/surface/panel/border)은 유지 → 기존 컴포넌트 자동 반영
+ *  - accent(인디고)는 primary 계열로 통합 — 화면에 포인트 색은 하나만
+ *  - 대비: ink 15.1:1 / ink-muted 8.5:1 / ink-faint 5.7:1 / primary 위 흰 글자 4.7:1 (WCAG AA 통과)
+ */
+@theme {
+    /* === Colors — primary (cerulean) === */
+    --color-primary: #0077C8;
+    --color-primary-hover: #005A99;
+    --color-primary-tint: #E3F1FB;   /* 선택 메뉴 · 칩 배경 */
+    --color-primary-subtle: #EEF6FC; /* 브리핑 카드 등 넓은 면 */
+
+    /* === Colors — accent: primary로 통합 (기존 사용처 호환용) === */
+    --color-accent: #0077C8;
+    --color-accent-hover: #005A99;
+    --color-accent-tint: #E3F1FB;
+
+    /* === Colors — ink (text) === */
+    --color-ink: #262626;        /* 본문·제목 — 순검정보다 눈부심 적음 */
+    --color-ink-muted: #4D4D4D;  /* 보조 텍스트 */
+    --color-ink-faint: #666666;  /* 날짜·조회수 등 메타 (기존 #94A3B8은 대비 미달) */
+
+    /* === Colors — surface === */
+    --color-surface: #FAFAFA;        /* 페이지 배경 */
+    --color-surface-muted: #F2F2F2;  /* 입력창 · 세그먼트 배경 */
+    --color-panel: #FFFFFF;          /* 카드 */
+    --color-panel-elevated: #F5F5F5; /* 호버 */
+
+    /* === Colors — border === */
+    --color-border: #EBEBEB;
+    --color-border-strong: #D9D9D9;
+
+    /* === Colors — semantic === */
+    --color-success: #1A7F4B;
+    --color-warning: #B45309;
+    --color-danger: #C50000;
+    --color-danger-tint: #FDECEC;
+
+    /* === Colors — market (국내 관례: 상승 빨강 / 하락 파랑) === */
+    --color-up: #C50000;
+    --color-down: #0761D1;
+
+    /* === Colors — 검색 하이라이트 (노랑은 여기만 사용) === */
+    --color-highlight: #FFF4C2;
+    --color-highlight-border: #F5E08A;
+
+    /* === Colors — code === */
+    --color-code: #4D4D4D;
+    --color-code-bg: #F2F2F2;
+    --color-code-border: transparent;
+
+    /* === Colors — note/callout === */
+    --color-note-bar: #D9D9D9;
+    --color-note-bg: #FAFAFA;
+
+    /* Typography — 제목도 산세리프로 통일 (Fraunces는 로고 등 필요 시 font-serif로만) */
+    --font-serif: 'Fraunces', 'Pretendard Variable', Georgia, serif;
+    --font-sans: 'Geist', 'Pretendard Variable', system-ui, -apple-system, sans-serif;
+    --font-mono: 'Geist Mono Variable', 'Pretendard Variable', ui-monospace, monospace;
+
+    /* Border radius */
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 10px;
+    --radius-xl: 14px;
+    --radius-2xl: 20px;
+
+    /* Shadow — 테두리 대신 아주 옅게 */
+    --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.04);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+}
+
+/* === Base styles === */
+:root {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--color-ink);
+    background-color: var(--color-surface);
+    color-scheme: light;
+    font-variant-numeric: lining-nums;
+    font-feature-settings: 'lnum' 1;
+    word-break: keep-all;          /* 한글 단어 단위 줄바꿈 */
+    overflow-wrap: anywhere;       /* 긴 URL·영문은 넘치지 않게 */
+}
+
+html, body, #root {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.font-mono {
+    font-weight: 500;
+}
+
+/* 헤딩 기본값 — 전부 산세리프 (P 시안)
+ * @layer base 안에 둬야 Tailwind 유틸(text-[17px] 등)이 이김.
+ * (기존처럼 layer 밖에 두면 요소 규칙이 유틸을 덮어써 사이드바 소제목까지 20px이 됨) */
+@layer base {
+    h1, h2, h3, h4 {
+        font-family: var(--font-sans);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.3;
+        color: var(--color-ink);
+    }
+
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.25rem; }
+    h3 { font-size: 1.0625rem; font-weight: 600; }
+    h4 { font-size: 1rem; font-weight: 600; }
+}
+
+code, pre, kbd, samp {
+    font-family: var(--font-mono);
+}
+
+::selection {
+    background-color: var(--color-primary-tint);
+    color: var(--color-primary-hover);
+}
+
+/* === 검색 하이라이트 — ES <em> / <mark> 공통 === */
+mark,
+.search-hl em {
+    font-style: normal;
+    color: inherit;
+    background: var(--color-highlight);
+    box-shadow: 0 0 0 1px var(--color-highlight-border);
+    border-radius: 4px;
+    padding: 0 2px;
+}
+
+/* === 로고 광원 (lux) === */
+.logo-light {
+    box-shadow:
+        0 0 0 3px rgb(0 119 200 / 0.12),
+        0 0 12px 4px rgb(0 119 200 / 0.45);
+}
+
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+.animate-blink {
+    animation: blink 1s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-blink { animation: none; }
+}
+
+/* briefing */
+.briefing-md h2 {
+    @apply font-sans text-sm font-semibold text-ink-muted mt-0 mb-2;
+}
+.briefing-md blockquote {
+    @apply border-l-2 border-primary/40 pl-3 my-3 font-sans text-[15px] text-ink;
+}
+.briefing-md p {
+    @apply font-sans text-[15px] leading-[1.75] text-ink my-2 max-w-[68ch];
+}
+.briefing-md strong {
+    @apply font-semibold text-ink;
+}
+.briefing-md ul {
+    @apply pl-5 my-2 space-y-1 list-disc marker:text-ink-faint;
+}
+.briefing-md li {
+    @apply font-sans text-[15px] leading-[1.75] text-ink;
+}
+.briefing-md hr {
+    @apply border-border my-4;
+}
+
+/* === Scrollbar === */
+*::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+*::-webkit-scrollbar-track {
+    background: var(--color-surface);
+}
+*::-webkit-scrollbar-thumb {
+    background: var(--color-border-strong);
+    border-radius: 6px;
+    border: 3px solid var(--color-surface);
+}
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--color-ink-faint);
+}
+*::-webkit-scrollbar-corner {
+    background: var(--color-surface);
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border-strong) var(--color-surface);
+}
+
+/* === MDXEditor 라이트 톤 정합 === */
+.mdxeditor {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    --baseBg: var(--color-panel);
+    --baseBgSubtle: var(--color-surface);
+    --baseBgHover: var(--color-panel-elevated);
+    --baseBorder: var(--color-border);
+    --baseTextContrast: var(--color-ink);
+    --accentBg: var(--color-primary);
+    --accentText: var(--color-primary);
+    --accentBgHover: var(--color-primary-hover);
+}
+
+.mdxeditor [contenteditable] {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+}
+
+.mdxeditor [contenteditable] h1,
+.mdxeditor [contenteditable] h2 {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+}
+
+.mdxeditor [contenteditable] code,
+.mdxeditor [contenteditable] pre {
+    font-family: var(--font-mono);
+}
+
+/* 인라인 코드 */
+.mdxeditor [contenteditable] :not(pre) > code {
+    background: var(--color-code-bg);
+    padding: 0.125rem 0.375rem;
+    border-radius: 4px;
+    font-size: 0.875em;
+    color: var(--color-code);
+}
+
+/* === 게시글 본문 === */
+
+/* 전역 h1~h4 element 규칙(layer 밖)이 Tailwind 유틸을 이기므로
+   본문 위계는 여기서 특정성으로 확정한다. */
+.post-content h2 {
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--color-ink);
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.post-content h3 {
+    font-family: var(--font-sans);
+    font-size: 1.1875rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-ink);
+    margin-top: 2.25rem;
+    margin-bottom: 0.625rem;
+}
+
+.post-content h4 {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+/* h5 — 크기로는 본문과 못 싸운다. 성격을 바꿔 라벨로 처리 */
+.post-content h5 {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.post-content > :first-child {
+    margin-top: 0;
+}
+
+.post-content strong {
+    font-weight: 600;
+    color: var(--color-ink);
+}
+
+/* 표 — 무채색 */
+.post-content table {
+    width: 100%;
+    font-size: 0.9375rem;
+}
+.post-content thead th {
+    background: var(--color-surface-muted);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.post-content tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* =====================================================================
+ * 메인 v2 — 색·움직임 (P · 메인 v2 시안)
+ * 원칙: 포인트 색은 세룰리안 하나 + 상승/하락 빨강·파랑 + 하이라이트 노랑.
+ *       움직임은 "의미 있는 곳"에만, prefers-reduced-motion 이면 모두 끔.
+ * ===================================================================== */
+
+/* 카드 등장 — 차례로 살짝 올라옴 (style 로 animation-delay 지정) */
+/* transform 대신 translate 속성 사용 — fill-mode 로 남는 transform 이 .card:hover 의 transform 을 덮지 않게 */
+@keyframes rise {
+    from { opacity: 0; translate: 0 10px; }
+    to   { opacity: 1; translate: none; }
+}
+.fx { animation: rise .5s cubic-bezier(.2, .7, .2, 1) both; }
+
+/* 카드 호버 — 2px 떠오름 + 옅은 파랑 테두리 */
+.card {
+    transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+.card:hover {
+    border-color: #BFD9EE;
+    box-shadow: 0 6px 18px -10px rgb(0 90 153 / .35);
+    transform: translateY(-2px);
+}
+
+/* 섹션 제목 밑 파란 짧은 선 — 카드 호버 시 길어짐 */
+.sec-h { position: relative; }
+.sec-h::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 28px;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width .35s ease;
+}
+.card:hover .sec-h::after { width: 64px; }
+
+/* 형광펜 — 왼쪽에서 칠해짐 */
+@keyframes sweep {
+    from { background-size: 0% 100%; }
+    to   { background-size: 100% 100%; }
+}
+.hl {
+    background-image: linear-gradient(var(--color-highlight), var(--color-highlight));
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 2px;
+    padding: 0 2px;
+    animation: sweep .9s .35s cubic-bezier(.4, 0, .2, 1) both;
+}
+
+/* 목록 줄 호버 */
+.row { transition: background-color .15s; border-radius: 6px; }
+.row:hover { background: #F2F8FD; }
+.post .t { display: inline-block; transition: transform .2s, color .2s; }
+.post:hover .t { transform: translateX(4px); color: var(--color-primary-hover); }
+.post .arr { opacity: 0; transform: translateX(-4px); transition: opacity .2s, transform .2s; color: var(--color-primary); }
+.post:hover .arr { opacity: 1; transform: none; }
+
+/* 검색창 — 옅은 파랑 바탕, 포커스 시 흰 바탕 + 링 */
+.search-pill {
+    background: #F5FAFE;
+    border: 1.5px solid #BFDDF2;
+    box-shadow: 0 2px 10px -4px rgb(0 119 200 / .25);
+    transition: border-color .2s, box-shadow .2s, background-color .2s;
+}
+.search-pill:hover { border-color: #8CC3EA; box-shadow: 0 4px 16px -6px rgb(0 119 200 / .4); }
+.search-pill:focus-within {
+    background: #FFFFFF;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px var(--color-primary-tint);
+}
+.search-go { transition: background-color .15s, transform .15s; }
+.search-go:hover { transform: translateX(2px); }
+
+/* 수집 실행 칸 — 아래에서 자람 */
+@keyframes grow {
+    from { transform: scaleY(0); }
+    to   { transform: scaleY(1); }
+}
+.bars > span { transform-origin: bottom; animation: grow .6s ease-out both; }
+
+/* 마스코트 눈 깜빡임 (LuciumLogo) */
+@keyframes lm-blink {
+    0%, 94%, 100% { transform: scaleY(1); }
+    96.5%         { transform: scaleY(.1); }
+}
+.lm-eye {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: lm-blink 5s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fx, .hl, .bars > span, .lm-eye { animation: none; }
+    .card, .card:hover, .post .t, .post .arr, .search-go { transition: none; transform: none; }
+}

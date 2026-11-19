@@ -1,0 +1,37 @@
+{
+  "index": {
+    "analysis": {
+      "tokenizer": {
+        "nori_user_dict_tokenizer": {
+          "type": "nori_tokenizer",
+          "decompound_mode": "mixed",
+          "discard_punctuation": "true"
+        }
+      },
+      "analyzer": {
+        "nori_analyzer": {
+          "type": "custom",
+          "tokenizer": "nori_user_dict_tokenizer",
+          "filter": [
+            "nori_part_of_speech_filter",
+            "lowercase"
+          ]
+        }
+      },
+      "filter": {
+        "nori_part_of_speech_filter": {
+          "type": "nori_part_of_speech",
+          "stoptags": [
+            "EP", "EF", "EC", "ETN", "ETM",
+            "IC",
+            "JKS", "JKC", "JKG", "JKO", "JKB", "JKV", "JKQ", "JX", "JC",
+            "MAG", "MAJ", "MM",
+            "SP", "SSC", "SSO", "SC", "SE",
+            "XPN", "XSA", "XSN", "XSV",
+            "UNA", "NA", "VSV"
+          ]
+        }
+      }
+    }
+  }
+}

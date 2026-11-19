@@ -1,0 +1,24 @@
+name: 🐛 Bug Report
+description: 버그 리포트
+labels: ["bug", "triage"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: 이슈 발생 원인
+      description: 재현 방법 / 기대 동작 / 실제 동작
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 환경
+      placeholder: |
+        - OS: 
+        - 브라우저:
+        - 백엔드 버전(commit SHA):
+  - type: textarea
+    id: logs
+    attributes:
+      label: 로그
+      render: shell
