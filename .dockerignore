@@ -1,0 +1,50 @@
+# ── .dockerignore (프로젝트 루트 = 빌드 컨텍스트) ──────────────
+# 백엔드(Dockerfile) / 프론트(Dockerfile.web) 두 빌드에 공통 적용.
+# 목적: ① 시크릿 유출 차단(특히 프론트 이미지는 public)
+#       ② 이미지 비대화 방지(로컬 node_modules/build 산출물 제외)
+#       ③ 로컬 아티팩트가 컨테이너 빌드에 섞이는 오염 방지
+
+# ── 시크릿 (최우선 — 절대 이미지에 들어가면 안 됨) ──
+.env
+.env.local
+*.env
+frontend/.env
+frontend/.env.*
+**/application-local.yml
+**/application-local.yaml
+
+# ── 백엔드 빌드 산출물 / Gradle ──
+build/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar   # 래퍼 jar 는 빌드에 필요하므로 예외
+
+# ── 프론트 의존성 / 빌드 산출물 ──
+# Dockerfile.web 이 컨테이너 안에서 npm ci + vite build 하므로 로컬 것 제외.
+frontend/node_modules/
+frontend/dist/
+node_modules/
+
+# ── ES 로컬 데이터 (compose 볼륨) ──
+elasticsearch/data/
+
+# ── IDE / OS / VCS ──
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+.git/
+.gitignore
+.gitattributes
+
+# ── CI / 배포 설정 (이미지 안에 불필요) ──
+.github/
+compose.yaml
+compose-local.yaml
+certbot/
+nginx/
+
+# ── 로그 / 임시 파일 ──
+*.log
+tmp/
+temp/

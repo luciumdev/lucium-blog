@@ -1,0 +1,67 @@
+# 로컬 개발 환경 — Spring Boot는 IntelliJ에서 직접 실행
+# 인프라(DB, Redis, ES)만 컨테이너로 실행
+
+services:
+
+  # ── PostgreSQL 16 ─────────────────────────────────────────────
+  db:
+    image: postgres:16-alpine
+    container_name: blog-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: blog_dev
+      POSTGRES_USER: blog
+      POSTGRES_PASSWORD: blog
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U blog" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── Redis 7 ───────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: blog-redis
+    ports:
+      - "6379:6379"
+    # 로컬에서는 비밀번호 없이 사용
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── ES 9.2.8 ───────────────────────────────────────────────────
+  elasticsearch:
+    build:
+      context: ./elasticsearch
+    container_name: blog-es
+    ports:
+      - "9200:9200"
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fs http://localhost:9200/_cluster/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+  redis-data:
+  es-data:

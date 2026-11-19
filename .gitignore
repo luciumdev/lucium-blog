@@ -1,0 +1,110 @@
+### 보안 ###
+.env
+.env.local
+!.env.example
+*.pem
+*.key
+*.p12
+*.jks
+*.pfx
+secrets/
+credentials/
+frontend/public/cheerpj/
+### AWS 자격증명 ###
+.aws/
+
+### gradle ###
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+!**/src/main/**/build/
+!**/src/test/**/build/
+HELP.md
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### spring boot ###
+# 운영 설정 파일 (prod yml은 커밋하되 시크릿 값은 env 변수로)
+# application-prod.yml은 커밋 OK (시크릿 없고 ${VAR} 참조만)
+
+#### 로컬 오버라이드 파일 (개인 설정) ###
+application-local-override.yml
+
+### log ###
+*.log
+*.log.*
+logs/
+log/
+bootrun.log
+
+### test results ###
+test-results/
+jacoco/
+.testcontainers/
+
+### Docker ###
+# docker-compose.yml, docker-compose-local.yml은 커밋 OK
+# 실제 운영 데이터 볼륨은 제외
+postgres-data/
+redis-data/
+es-data/
+.data/
+
+### Nginx ###
+#nginx/nginx.conf
+certbot/
+
+### OS ###
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+### 임시 파일 ###
+*.tmp
+*.swp
+*.swo
+*~
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+# 팀 공유 시 아래 주석 해제
+# !.idea/codeStyles/
+# !.idea/inspectionProfiles/
+
+docs/
+src/main/resources/application-local.yml
+#src/main/resources/application.yml
+

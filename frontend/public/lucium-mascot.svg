@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <title>lucium.dev Samoyed developer mascot</title>
+  <desc>Minimal white Samoyed face with a subtle blue terminal chevron.</desc>
+<g id="samoyed-mark">
+  <path id="samoyed-head" d="M 96,34 C 88,29 79,22 71,19 C 61,14 56,17 51,24 C 41,37 37,51 35,67 C 26,72 22,82 24,92 C 15,99 13,110 18,120 C 10,129 11,140 21,148 C 18,158 26,169 39,170 C 38,181 49,186 61,183 C 73,191 86,193 100,193 C 114,193 128,190 139,183 C 152,186 163,178 163,170 C 177,166 184,155 179,148 C 188,139 189,128 182,119 C 189,109 186,99 177,92 C 180,80 174,70 165,66 C 162,48 156,33 147,24 C 141,16 135,14 127,19 C 117,25 111,29 105,34 C 102,32 99,32 96,34 Z"
+        fill="#FFFFFF" stroke="#B9B3AE" stroke-width="4.8" stroke-linejoin="round" />
+  <path d="M 50,68 C 51,52 58,37 63,34 C 69,37 76,49 79,58 C 69,59 58,63 50,68 Z"
+        fill="#EEE6E1" />
+  <path d="M 150,68 C 149,52 142,37 137,34 C 131,37 124,49 121,58 C 131,59 142,63 150,68 Z"
+        fill="#EEE6E1" />
+  <circle cx="78" cy="111" r="4.6" fill="#44484D"/>
+  <circle cx="122" cy="111" r="4.6" fill="#44484D"/>
+  <path d="M 91,128 C 93,125 107,125 109,128 C 110,131 103,138 100,139 C 97,138 90,131 91,128 Z" fill="#44484D"/>
+  <path id="terminal-chevron" d="M 148,133 L 158,141 L 148,149" fill="none" stroke="#1686F7" stroke-width="6.8" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

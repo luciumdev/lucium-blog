@@ -1,0 +1,9 @@
+# 복사해서 terraform.tfvars 로 사용 (terraform.tfvars 는 커밋 금지)
+uploads_bucket_name = "lucium-blog-uploads-2026"
+github_repo         = "OWNER/REPO"
+budget_alert_email  = "you@example.com"
+
+# 기본값 변경 시에만
+# cdn_domain             = "cdn.lucium.dev"
+# budget_limit_usd       = 30
+# upload_allowed_origins = ["https://lucium.dev", "https://www.lucium.dev"]
