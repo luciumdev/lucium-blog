@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 630" width="1000" height="630" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#57606A"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0077C8"/>
+    </marker>
+  </defs>
+
+  <rect width="1000" height="630" rx="12" fill="#FFFFFF"/>
+
+  <!-- AWS -->
+  <rect x="190" y="30" width="570" height="450" rx="14" fill="#F6F8FA" stroke="#D0D7DE" stroke-dasharray="6 4"/>
+  <text x="210" y="55" font-size="13" font-weight="700" fill="#57606A">AWS<tspan font-weight="400"> · ap-northeast-2</tspan></text>
+
+  <!-- EC2 -->
+  <rect x="215" y="70" width="520" height="260" rx="12" fill="#FFFFFF" stroke="#0077C8" stroke-width="1.5"/>
+  <text x="233" y="94" font-size="12" font-weight="700" fill="#0077C8">EC2 t3.small · Docker Compose</text>
+
+  <!-- nginx -->
+  <rect x="240" y="115" width="130" height="56" rx="8" fill="#FFFFFF" stroke="#D0D7DE"/>
+  <text x="305" y="140" font-size="15" font-weight="700" fill="#1F2328" text-anchor="middle">nginx</text>
+  <text x="305" y="159" font-size="11" fill="#57606A" text-anchor="middle">정적 파일 · 프록시</text>
+
+  <!-- Spring Boot -->
+  <rect x="430" y="115" width="150" height="56" rx="8" fill="#0077C8"/>
+  <text x="505" y="140" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Spring Boot</text>
+  <text x="505" y="159" font-size="11" fill="#DCEBF7" text-anchor="middle">API · 스케줄러</text>
+
+  <path d="M370,143 H426" stroke="#57606A" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Spring Boot → 저장소 -->
+  <path d="M505,171 V226" stroke="#57606A" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M380,200 H640" stroke="#57606A" stroke-width="1.5" fill="none"/>
+  <path d="M380,200 V226" stroke="#57606A" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M640,200 V226" stroke="#57606A" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- PostgreSQL -->
+  <path d="M325,237 L325,283 A55,7 0 0 0 435,283 L435,237 Z" fill="#FFFFFF" stroke="#8C959F"/>
+  <ellipse cx="380" cy="237" rx="55" ry="7" fill="#F6F8FA" stroke="#8C959F"/>
+  <text x="380" y="268" font-size="13" font-weight="700" fill="#1F2328" text-anchor="middle">PostgreSQL</text>
+
+  <!-- Redis -->
+  <path d="M450,237 L450,283 A55,7 0 0 0 560,283 L560,237 Z" fill="#FFFFFF" stroke="#8C959F"/>
+  <ellipse cx="505" cy="237" rx="55" ry="7" fill="#F6F8FA" stroke="#8C959F"/>
+  <text x="505" y="268" font-size="13" font-weight="700" fill="#1F2328" text-anchor="middle">Redis</text>
+
+  <!-- Elasticsearch -->
+  <path d="M575,237 L575,283 A65,7 0 0 0 705,283 L705,237 Z" fill="#FFFFFF" stroke="#8C959F"/>
+  <ellipse cx="640" cy="237" rx="65" ry="7" fill="#F6F8FA" stroke="#8C959F"/>
+  <text x="640" y="268" font-size="13" font-weight="700" fill="#1F2328" text-anchor="middle">Elasticsearch</text>
+
+  <!-- CloudFront -->
+  <rect x="240" y="385" width="130" height="56" rx="8" fill="#FFFFFF" stroke="#D0D7DE"/>
+  <text x="305" y="410" font-size="14" font-weight="700" fill="#1F2328" text-anchor="middle">CloudFront</text>
+  <text x="305" y="428" font-size="11" fill="#57606A" text-anchor="middle">CDN</text>
+
+  <!-- S3 -->
+  <path d="M470,390 L470,440 A55,7 0 0 0 580,440 L580,390 Z" fill="#FFFFFF" stroke="#8C959F"/>
+  <ellipse cx="525" cy="390" rx="55" ry="7" fill="#F6F8FA" stroke="#8C959F"/>
+  <text x="525" y="419" font-size="14" font-weight="700" fill="#1F2328" text-anchor="middle">S3</text>
+  <text x="525" y="435" font-size="11" fill="#57606A" text-anchor="middle">업로드 파일</text>
+
+  <path d="M370,413 H466" stroke="#57606A" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="418" y="405" font-size="11" fill="#57606A" text-anchor="middle">OAC</text>
+
+  <!-- 브라우저 -->
+  <rect x="30" y="115" width="120" height="56" rx="28" fill="#FFFFFF" stroke="#1F2328" stroke-width="1.5"/>
+  <text x="90" y="148" font-size="14" font-weight="700" fill="#1F2328" text-anchor="middle">브라우저</text>
+
+  <path d="M150,143 H236" stroke="#0077C8" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+  <text x="170" y="134" font-size="11" font-weight="700" fill="#0077C8" text-anchor="middle">HTTPS</text>
+
+  <path d="M90,171 V413 H236" stroke="#57606A" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="98" y="300" font-size="11" fill="#57606A">이미지 조회</text>
+
+  <path d="M60,171 V462 H525 V451" stroke="#57606A" stroke-width="1.5" fill="none" stroke-dasharray="5 3" marker-end="url(#arrow)"/>
+  <text x="300" y="456" font-size="11" fill="#57606A" text-anchor="middle">파일 업로드 (Presigned URL)</text>
+
+  <!-- 외부 API -->
+  <rect x="800" y="95" width="170" height="180" rx="10" fill="#FFFFFF" stroke="#D0D7DE"/>
+  <text x="885" y="122" font-size="14" font-weight="700" fill="#1F2328" text-anchor="middle">외부 API</text>
+  <line x1="820" y1="134" x2="950" y2="134" stroke="#EAEEF2"/>
+  <text x="885" y="156" font-size="12" fill="#57606A" text-anchor="middle">한국투자증권</text>
+  <text x="885" y="178" font-size="12" fill="#57606A" text-anchor="middle">한국수출입은행</text>
+  <text x="885" y="200" font-size="12" fill="#57606A" text-anchor="middle">HackerNews</text>
+  <text x="885" y="222" font-size="12" fill="#57606A" text-anchor="middle">한국경제 RSS</text>
+  <text x="885" y="244" font-size="12" fill="#57606A" text-anchor="middle">Claude API</text>
+
+  <path d="M580,143 H796" stroke="#57606A" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="680" y="134" font-size="11" fill="#57606A" text-anchor="middle">스케줄 수집</text>
+
+  <!-- 배포 -->
+  <text x="30" y="522" font-size="12" font-weight="700" fill="#57606A">배포</text>
+
+  <rect x="30" y="535" width="140" height="52" rx="8" fill="#FFFFFF" stroke="#D0D7DE"/>
+  <text x="100" y="557" font-size="14" font-weight="700" fill="#1F2328" text-anchor="middle">GitHub</text>
+  <text x="100" y="575" font-size="11" fill="#57606A" text-anchor="middle">PR · main 머지</text>
+
+  <rect x="215" y="535" width="180" height="52" rx="8" fill="#FFFFFF" stroke="#D0D7DE"/>
+  <text x="305" y="557" font-size="14" font-weight="700" fill="#1F2328" text-anchor="middle">GitHub Actions</text>
+  <text x="305" y="575" font-size="11" fill="#57606A" text-anchor="middle">테스트 · 이미지 빌드</text>
+
+  <rect x="440" y="535" width="130" height="52" rx="8" fill="#FFFFFF" stroke="#D0D7DE"/>
+  <text x="505" y="557" font-size="14" font-weight="700" fill="#1F2328" text-anchor="middle">Docker Hub</text>
+  <text x="505" y="575" font-size="11" fill="#57606A" text-anchor="middle">이미지 저장</text>
+
+  <rect x="615" y="535" width="140" height="52" rx="8" fill="#FFFFFF" stroke="#D0D7DE"/>
+  <text x="685" y="557" font-size="14" font-weight="700" fill="#1F2328" text-anchor="middle">AWS SSM</text>
+  <text x="685" y="575" font-size="11" fill="#57606A" text-anchor="middle">배포 명령 실행</text>
+
+  <path d="M170,561 H211" stroke="#57606A" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M395,561 H436" stroke="#57606A" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="416" y="553" font-size="10" fill="#57606A" text-anchor="middle">push</text>
+
+  <path d="M305,587 V610 H685 V591" stroke="#57606A" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="560" y="604" font-size="11" fill="#57606A" text-anchor="middle">OIDC 임시 권한</text>
+
+  <path d="M685,535 V334" stroke="#0077C8" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+  <text x="695" y="508" font-size="11" font-weight="700" fill="#0077C8">compose pull · up</text>
+</svg>
